@@ -43,11 +43,20 @@ class Raven(Animal):
         print('oooh, meat....')
 
 
-class MakeAnimal():
-    def __init__(self, animal_type, age, voice='groal'):
-        self.name = name
-        self.age = age
-        self.voice = voice
+class MakeAnimal(Animal):
+
+    set = {'Fish','Dog','Raven'}
+    def __init__(self, animal_type, *args, **kwargs):
+        if animal_type in set:
+            super().__init__(name, age, voice)
+            self.animal = animal_type
+            return animal
+        else:
+            print('Такое животное не производим.')
+
+a = MakeAnimal('Fish','Nemo', 2, 'silver', 'bul-bul')
+print(a.animal_type)
+
 
 
 
