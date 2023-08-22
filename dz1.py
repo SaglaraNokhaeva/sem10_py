@@ -45,33 +45,22 @@ class Raven(Animal):
 
 class MakeAnimal(Animal):
 
-    set = {'Fish','Dog','Raven'}
-    def __init__(self, animal_type, *args, **kwargs):
+    def making(animal_type, *args, **kwargs):
+        set = {'Fish', 'Dog', 'Raven'}
         if animal_type in set:
-            super().__init__(name, age, voice)
-            self.animal = animal_type
-            return animal
+            if animal_type == 'Fish':
+                my_fish = Fish(*args, **kwargs)
+                return my_fish
+            if animal_type == 'Dog':
+                my_dog = Dog(*args, **kwargs)
+                return my_dog
+            if animal_type == 'Raven':
+                my_raven = Raven(*args, **kwargs)
+                return my_raven
+
         else:
             print('Такое животное не производим.')
 
-a = MakeAnimal('Fish','Nemo', 2, 'silver', 'bul-bul')
-print(a.animal_type)
-
-
-
-
-
-
-
-# fish = Fish('Nemo', 2, 'silver', 'bul-bul')
-# dog = Dog('Spark', 5, 'pitbull', 'bark!')
-# bird = Raven('Qarasique', 6, 'white', 'bravo!')
-#
-# animals = [fish, dog, bird]
-#
-# for i in animals:
-#     i.make_voice()
-#
-# fish.swim()
-# dog.bark()
-# bird.fly_around_corpse()
+a = MakeAnimal.making('Fish','Nemo', 2, 'silver', 'bul-bul')
+print(a.name, a.age, a.scales, a.voice)
+b = MakeAnimal.making('Bird','Nemo', 2, 'silver', 'bul-bul')
